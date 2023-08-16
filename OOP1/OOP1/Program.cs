@@ -4,58 +4,67 @@
     {
         static void Main(string[] args)
         {
-            Product[] products = new Product[3];
-            products[0] = new Product(500, "Lenovo", "PS928719", "leptop");
-            products[1] = new Product(950, "Creed", "AC828188", "Parfume");
-            products[2] = new Product(37500, "Malibu XL", "XL2257911", "Car");
-            foreach (Product p in products)
-            {
-                p.DisplayInfo();
-            }
-            CalculateTotal(products);
+            Rectangle rectangle = new Rectangle(5, 6);
+            Console.WriteLine("Perimetr: " + rectangle.CalculatePerimetr());
+            Console.WriteLine("Area: " + rectangle.CalculateArea());
+            Console.WriteLine("Diagonal: " + rectangle.CalculateDiagonal());
+
+            Circle circle = new Circle(3);
+            Console.WriteLine("Length: " +  circle.CalculateLength());
+            Console.WriteLine("Area: " +  circle.CalculateArea());
         }
-
-        static void CalculateTotal(Product[] products)
-        {
-            decimal total = 0;
-            foreach (Product product in products)
-            {
-                total += product.Price;
-            }
-            Console.WriteLine("Total price: " + total);
-
-        }  
     }
-    class Product
+    class Rectangle
     {
-        public decimal Price { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public string Category { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
 
-        public Product()
+        public Rectangle() 
         {
-
+            Width = 0;
+            Height = 0;
+        }
+        public Rectangle(double width, double height) 
+        { 
+            Width = width;
+            Height = height;
         }
 
-        public Product(decimal price, string name)
+
+        public double CalculatePerimetr()
         {
-            Price = price;
-            Name = name;
+            return (Width + Height) * 2;
+        }
+        public double CalculateArea()
+        {
+            return Width * Height;
+        }
+        public double CalculateDiagonal()
+        {
+            return  Math.Sqrt(Width * Width + Height * Height);
+        }
+    }
+
+    class Circle
+    {
+        public double Radius { get; set; }
+        public Circle()
+        {
+            Radius = 0;
+        }
+        public Circle(double radius)
+        {
+            Radius = radius;
         }
 
-        public Product(decimal price, string name, string code, string category)
+        public double CalculateLength()
         {
-            Price = price;
-            Name = name;
-            Code = code;
-            Category = category;
+            return 2 * Math.PI * Radius;
         }
 
-        public void DisplayInfo()
+        public double CalculateArea()
         {
-            Console.WriteLine($"Price: {Price}, Name: {Name}, Code: {Code}, Category: {Category}");
+            return Math.PI * Radius * Radius;
         }
-
     }
 }
