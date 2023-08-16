@@ -10,18 +10,5 @@
             rectangle.DisplayInfo();
         }
     }
-    class Rectangle
-    {
-        public double Width { get; set; }
-        public double Height { get; set; }
-
-        public double CalculadeArea ()
-        {
-            return Width * Height;
-        }
-        public void DisplayInfo()
-        {
-            Console.WriteLine($"Area of Rectangular: {CalculadeArea()}");
-        }
-    }
+   
 }
