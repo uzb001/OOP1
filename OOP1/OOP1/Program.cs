@@ -4,24 +4,58 @@
     {
         static void Main(string[] args)
         {
-            Rectangle rectangle = new Rectangle();
-            rectangle.Width = 10;
-            rectangle.Height = 4;
-            rectangle.DisplayInfo();
+            Product[] products = new Product[3];
+            products[0] = new Product(500, "Lenovo", "PS928719", "leptop");
+            products[1] = new Product(950, "Creed", "AC828188", "Parfume");
+            products[2] = new Product(37500, "Malibu XL", "XL2257911", "Car");
+            foreach (Product p in products)
+            {
+                p.DisplayInfo();
+            }
+            CalculateTotal(products);
         }
-    }
-    class Rectangle
-    {
-        public double Width { get; set; }
-        public double Height { get; set; }
 
-        public double CalculadeArea ()
+        static void CalculateTotal(Product[] products)
         {
-            return Width * Height;
+            decimal total = 0;
+            foreach (Product product in products)
+            {
+                total += product.Price;
+            }
+            Console.WriteLine("Total price: " + total);
+
+        }  
+    }
+    class Product
+    {
+        public decimal Price { get; set; }
+        public string Name { get; set; }
+        public string Code { get; set; }
+        public string Category { get; set; }
+
+        public Product()
+        {
+
         }
+
+        public Product(decimal price, string name)
+        {
+            Price = price;
+            Name = name;
+        }
+
+        public Product(decimal price, string name, string code, string category)
+        {
+            Price = price;
+            Name = name;
+            Code = code;
+            Category = category;
+        }
+
         public void DisplayInfo()
         {
-            Console.WriteLine($"Area of Rectangular: {CalculadeArea()}");
+            Console.WriteLine($"Price: {Price}, Name: {Name}, Code: {Code}, Category: {Category}");
         }
+
     }
 }
